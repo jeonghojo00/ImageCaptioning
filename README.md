@@ -8,7 +8,10 @@ ImgCaptioning_EncoderSearching
 ImgCaptioning_Training
 
 ## Setup
-
+pytorch
+efficientnet_pytorch
+timm
+pycocoevalcap
 
 ## Data
 
@@ -16,7 +19,7 @@ ImgCaptioning_Training
 
 ## Evaluation
 ### Method
-The results were evaluated in two ways: evaluation metrics and structural analysis of sentences.
+The results were evaluated in two ways: quantitative evaluation metrics and structural analysis of sentences.
 For evaluation metrics, BLEU-1~4, METEOR, ROUGE-L, and SPICE metrics were used to score predictions.
 For the structural analysis of sentences, 10 images were randomly selected from the test image folder, prediction were made with each encoder, and then each sentences were analyzed by Noun, Verb, and Prepositional phrases by human judegement.
 After two evaluations were done, two results were compared if they make sense to see if evaluation metrics make sense or at least indicate better predictions.
@@ -44,6 +47,15 @@ After two evaluations were done, two results were compared if they make sense to
 |                 |           |              |             |           |             |            |               |         |              |            |
 |       MEAN      | 4.4       | 2.4          | 3.2         | 3.7       | 1.9         | 3.7        | 3.4           | 2.3     | 0.3          | 1.9        |
 |      STDEV      | 3.50      | 2.27         | 3.19        | 3.80      | 2.13        | 3.80       | 3.66          | 3.30    | 0.48         | 2.23       |
+
+### Analysis
+The quantitative evaluation metrics indicated that ResNet-152 did the best score and MNASNet, WideResNet101, and ResNeXt101 did the second best scores.
+The structural analysis of sentences indicated that ResNet-152 did the best score and GoogleNet and ResNeXt101 did the second best, then the WideResNet101 did the third best.
+Consequently, the ResNet152 showed did the best among the other encoders in both evaluations. However, all the encoders showed the weaknesses in predicting animal behaviors and the situations that people do not face in normal life, such as digging a ground or marching while playing musical instruments.
+
+### Improvements
+The model can be trained better with improved attention mechanisms and decoder models. 
+Moreover, the model may require more dataset to learn the actions of the objects. Although the encoders were pretrained with ImageNet,  the ImageNet is about Image Classificaiton and the Classificaiton does not include what actions are taken in the images. 
 
 ## Appendix
 ### Inferences on 10 Random Images
