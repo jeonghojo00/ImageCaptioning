@@ -20,7 +20,33 @@ The results were evaluated in two ways: evaluation metrics and structural analys
 For evaluation metrics, BLEU-1~4, METEOR, ROUGE-L, and SPICE metrics were used to score predictions.
 For the structural analysis of sentences, 10 images were randomly selected from the test image folder, prediction were made with each encoder, and then each sentences were analyzed by Noun, Verb, and Prepositional phrases by human judegement.
 After two evaluations were done, two results were compared if they make sense to see if evaluation metrics make sense or at least indicate better predictions.
-### Predictions
+
+### Evaluation Metrics: BLEU-4, METEOR, ROUGE_L, SPICE
+![Alt](images/BLEU_4.png)
+![Alt](images/METEOR.png)
+![Alt](images/ROUGE_L.png)
+![Alt](images/SPICE.png)
+
+### Structural analysis of sentences
+| Analysis Result |           |              |             |           |             |            |               |         |              |            |
+|-----------------|-----------|--------------|-------------|-----------|-------------|------------|---------------|---------|--------------|------------|
+| IMAGE           | ResNet152 | Efficientnet | DenseNet161 | GoogleNet | MobileNetV3 | ResNeXt101 | WideResNet101 | MNASNet | ShuffleNetV2 | SqueezeNet |
+| 1               | 6         | 6            | 7           | 7         | 3           | 9          | 7             | 3       | 0            | 6          |
+| 2               | 10        | 1            | 9           | 0         | 2           | 1          | 7             | 6       | 0            | 0          |
+| 3               | 4         | 3            | 6           | 1         | 3           | 0          | 0             | 0       | 0            | 0          |
+| 4               | 3         | 6            | 3           | 9         | 1           | 7          | 7             | 1       | 1            | 1          |
+| 5               | 4         | 0            | 4           | 1         | 0           | 1          | 2             | 2       | 0            | 5          |
+| 6               | 10        | 1            | 0           | 7         | 7           | 7          | 0             | 10      | 0            | 3          |
+| 7               | 0         | 0            | 0           | 0         | 0           | 0          | 0             | 0       | 0            | 0          |
+| 8               | 1         | 1            | 1           | 1         | 1           | 1          | 2             | 1       | 1            | 1          |
+| 9               | 1         | 2            | 1           | 2         | 0           | 2          | 0             | 0       | 1            | 0          |
+| 10              | 5         | 4            | 1           | 9         | 2           | 9          | 9             | 0       | 0            | 3          |
+|                 |           |              |             |           |             |            |               |         |              |            |
+|       MEAN      | 4.4       | 2.4          | 3.2         | 3.7       | 1.9         | 3.7        | 3.4           | 2.3     | 0.3          | 1.9        |
+|      STDEV      | 3.50      | 2.27         | 3.19        | 3.80      | 2.13        | 3.80       | 3.66          | 3.30    | 0.48         | 2.23       |
+
+## Appendix
+### Inferences on 10 Random Images
 As shown in the table, through the structural analysis of sentences, ResNet152 showed the best results among other encoders and GoogleNet, ResNeXt-101, and WideResNet101 showed the next best results among others.
 ![Alt](images/396179143_e1511336e1.jpg)
 | Predicted Captions                                                                                                   |
@@ -162,28 +188,12 @@ As shown in the table, through the structural analysis of sentences, ResNet152 s
 | ShuffleNetV2 :  <start> a man in a black jacket is   holding a microphone toward a young girl with long brown hair . |
 | SqueezeNet :  <start> a man is sitting in front of   a orange race car . <end>                                       |
 
-### Structural analysis of sentences
-| Analysis Result |           |              |             |           |             |            |               |         |              |            |
-|-----------------|-----------|--------------|-------------|-----------|-------------|------------|---------------|---------|--------------|------------|
-| IMAGE           | ResNet152 | Efficientnet | DenseNet161 | GoogleNet | MobileNetV3 | ResNeXt101 | WideResNet101 | MNASNet | ShuffleNetV2 | SqueezeNet |
-| 1               | 6         | 6            | 7           | 7         | 3           | 9          | 7             | 3       | 0            | 6          |
-| 2               | 10        | 1            | 9           | 0         | 2           | 1          | 7             | 6       | 0            | 0          |
-| 3               | 4         | 3            | 6           | 1         | 3           | 0          | 0             | 0       | 0            | 0          |
-| 4               | 3         | 6            | 3           | 9         | 1           | 7          | 7             | 1       | 1            | 1          |
-| 5               | 4         | 0            | 4           | 1         | 0           | 1          | 2             | 2       | 0            | 5          |
-| 6               | 10        | 1            | 0           | 7         | 7           | 7          | 0             | 10      | 0            | 3          |
-| 7               | 0         | 0            | 0           | 0         | 0           | 0          | 0             | 0       | 0            | 0          |
-| 8               | 1         | 1            | 1           | 1         | 1           | 1          | 2             | 1       | 1            | 1          |
-| 9               | 1         | 2            | 1           | 2         | 0           | 2          | 0             | 0       | 1            | 0          |
-| 10              | 5         | 4            | 1           | 9         | 2           | 9          | 9             | 0       | 0            | 3          |
-|                 |           |              |             |           |             |            |               |         |              |            |
-|       MEAN      | 4.4       | 2.4          | 3.2         | 3.7       | 1.9         | 3.7        | 3.4           | 2.3     | 0.3          | 1.9        |
-|      STDEV      | 3.50      | 2.27         | 3.19        | 3.80      | 2.13        | 3.80       | 3.66          | 3.30    | 0.48         | 2.23       |
- 
+
 ## Reference
 https://github.com/ntrang086/image_captioning
 https://github.com/helloMickey/caption_eval
 https://github.com/ndb796/Deep-Learning-Paper-Review-and-Practice/blob/master/code_practices/Neural_Image_Captioning_(NIC)_Using_ResNet_101.ipynb
+
 
 
 
