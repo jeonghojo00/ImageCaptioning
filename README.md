@@ -4,16 +4,18 @@
 Build a model that generates a english caption of an image. This mode mainly consists of an ecoder, which is a CNN model, and a decoder, which is a RNN model. The encoder. The model and hyperparameters are based on tuned by [Show, Attend and Tell](https://arxiv.org/pdf/1502.03044.pdf)
 
 ## Code
-ImgCaptioning_EncoderSearching
-ImgCaptioning_Training
+ImgCaptioning_EncoderSearching : Train the models with encoders and save
+ImgCaptioning_Inference: Predict captions with the models and evaluate by Quantiative Evaluation Metrics and Qualitative Evaluation by Structural Analysis
 
 ## Setup
 pytorch
+torchtext
 efficientnet_pytorch
 timm
 pycocoevalcap
 
 ## Data
+Flickr8k
 
 ## Run
 
